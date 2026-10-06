@@ -1,0 +1,13 @@
+{
+	"name": "DS_AZR_SRC_DB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZR_SRC_DB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

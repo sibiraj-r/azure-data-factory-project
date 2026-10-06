@@ -1,0 +1,40 @@
+{
+	"name": "DS_AZADLS_PARQUET_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_PARQUET_SRC",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"target_account_loc": {
+					"value": "@dataset().target_account_loc",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"target_account_loc": {
+				"type": "string",
+				"defaultValue": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdata"
+			},
+			"target_dir": {
+				"type": "string",
+				"defaultValue": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdirectory"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat(\n    dataset().target_dir, '/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

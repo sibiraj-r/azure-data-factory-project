@@ -1,0 +1,38 @@
+{
+	"name": "DS_AZADLS_PRQT_CLOUD_CSV_SINK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_VB_CLOUD_CSV_SINK",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"target_account_loc": {
+					"value": "@dataset().target_account_loc",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"target_account_loc": {
+				"type": "string"
+			},
+			"target_dir": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat(\n    dataset().target_dir, '/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

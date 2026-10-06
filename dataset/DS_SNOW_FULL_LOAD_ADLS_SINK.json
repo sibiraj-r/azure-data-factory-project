@@ -1,0 +1,38 @@
+{
+	"name": "DS_SNOW_FULL_LOAD_ADLS_SINK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SNOW_FULL_LOAD_ADLS_SINK",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"target_account_loc": {
+					"value": "@dataset().target_account_loc",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"target_account_loc": {
+				"type": "string"
+			},
+			"target_dir": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().target_dir",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

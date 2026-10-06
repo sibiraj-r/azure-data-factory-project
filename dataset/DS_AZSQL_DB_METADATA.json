@@ -1,0 +1,13 @@
+{
+	"name": "DS_AZSQL_DB_METADATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZSQLDB_METADATA",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

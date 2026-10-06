@@ -1,0 +1,13 @@
+{
+	"name": "DS_AZSQLDBCSVEXCEL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZSQLDBCSVEXCEL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

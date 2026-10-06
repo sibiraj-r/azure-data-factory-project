@@ -1,0 +1,47 @@
+{
+	"name": "DS_AZADLS_EXCELCOPY_CLOUD_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_VB_EXCEL_CLOUD_COPY",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"storage_account_loc": {
+					"value": "@dataset().storage_account_loc",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"sheetname": {
+				"type": "string"
+			},
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().sheetname",
+				"type": "Expression"
+			},
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "input",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "LS_SNOW_BLOB_FULL_LOAD",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "@{linkedService().storage_account_loc}"
+		}
+	}
+}
